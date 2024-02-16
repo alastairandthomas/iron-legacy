@@ -1,31 +1,40 @@
 import React from "react";
-import sample from "../assets/sample.json";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function ProjectDetailsPage() {
   const { id } = useParams();
-  console.log(id);
-  const project = sample.find((el) => el.id === id);
+  const navigate = useNavigate();
 
-  console.log(project);
+  const [project, setProject] = useState(null);
+  const API_URL = "https://ironhackprojects-backend.adaptable.app";
 
-  return (
+  const handleDelete = () => {
+    axios
+      .delete(`${API_URL}/projects/${id}`);
+    navigate(`/projects`);
+  }
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/projects/${id}`)
+      .then((response) => setProject(response.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  return project ? (
     <div className="hero min-h-screen bg-base-200 justify-betwee">
       <div className="hero-content flex-col lg:flex-row">
-        <img
-          src={project.image}
-          className="max-w-max rounded-lg shadow-2xl"
-        />
+        <img src={project.image} className="max-w-max rounded-lg shadow-2xl" />
         <div>
           <h1 className="text-5xl font-bold">{project.title}</h1>
-          <p className="py-6">
-            {project.description}
-          </p>
-          <button className="btn btn-primary">Get Started</button>
+          <p className="py-6">{project.description}</p>
+          <button className="btn btn-primary" onClick={handleDelete}>Delete</button>
         </div>
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default ProjectDetailsPage;

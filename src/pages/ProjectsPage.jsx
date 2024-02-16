@@ -1,7 +1,22 @@
 import sample from "../assets/sample.json";
 import {Link} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function ProjectsPage() {
+
+const [projects, setProjects] = useState(null);
+const API_URL = "https://ironhackprojects-backend.adaptable.app"
+
+useEffect(() => {
+  axios
+    .get(`${API_URL}/projects`)
+    .then(response => setProjects(response.data))
+    .catch(err => console.log(err));
+},[projects])
+
+
+
   return (
     <> 
     <section className="container flex justify-center">
@@ -11,7 +26,7 @@ function ProjectsPage() {
         <h3>Filter</h3>
     </div>
     <div className="flex grid-flow-row justify-evenly flex-wrap gap-6">
-        {sample.map((obj) => {
+        {projects && projects.map((obj) => {
     return (
       <Link to={`/projectdetails/${obj.id}`}>
       <div className="card w-96 bg-base-100 shadow-xl grid-cols-1">
