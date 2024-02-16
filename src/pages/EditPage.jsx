@@ -1,16 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import {v4 as uuidv4} from 'uuid';
+import { useNavigate, useParams } from "react-router-dom";
 
 import Form from '../components/Form';
 
-function CreatePage() {
-  const [inputs, setInputs] = useState({id : uuidv4() });
+function EditPage() {
 
-  const API_URL = "https://ironhackprojects-backend.adaptable.app";
+    const [inputs, setInputs] = useState({});
+    const {id} = useParams();
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    const API_URL = "https://ironhackprojects-backend.adaptable.app";
+
+    useEffect(() => {
+
+        axios
+            .get(`${API_URL}/projects/${id}`)
+            .then(response => setInputs(response.data))
+            .catch(err => console.log(err));
+
+    },[])
+  
+
+
+
+  
 
   const inputHandler = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -20,17 +34,17 @@ function CreatePage() {
     e.preventDefault();
     //========== HERE THE AXIOS THAT PUSH THE NEW PROJECT
 
-    axios.post(`${API_URL}/projects`, inputs);
-
-    navigate(`/projects`);
+    axios.put(`${API_URL}/projects/${id}`, inputs);
+    console.log(id)
+    navigate(`/projectdetails/${id}`);
     setInputs({});
   };
 
   return (
-    <Form inputs={inputs} inputHandler={inputHandler} submitHandler={submitHandler} />
+    <Form inputs={inputs} inputHandler={inputHandler} submitHandler={submitHandler} navigate={navigate}/>
   )
   }
-export default CreatePage;
+export default EditPage;
 
 // <div>
 //     create CreatePage

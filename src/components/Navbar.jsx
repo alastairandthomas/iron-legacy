@@ -50,7 +50,7 @@ function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link to="/create"><a className="btn">Add Project</a></Link>
             </div>
         </div>
     )

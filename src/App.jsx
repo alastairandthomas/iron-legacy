@@ -11,6 +11,7 @@ import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import FavoritePage from './pages/FavoritePage';
 import ErrorPage from './pages/ErrorPage';
+import EditPage from './pages/EditPage'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path='/create' element={<CreatePage />} />
       <Route path='/projects' element={<ProjectsPage />} />
       <Route path='/projectdetails/:id' element={<ProjectDetailsPage />} />
+      <Route path='/modify/:id' element={<EditPage />} />
       <Route path='/favorites' element={<FavoritePage />} />
       <Route path='*' element={<ErrorPage />} />
     </Routes>

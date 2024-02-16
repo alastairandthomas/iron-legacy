@@ -16,20 +16,25 @@ function ProjectDetailsPage() {
     navigate(`/projects`);
   }
 
+  const handleModify = () => {
+
+  }
+
   useEffect(() => {
     axios
       .get(`${API_URL}/projects/${id}`)
       .then((response) => setProject(response.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [project]);
 
   return project ? (
     <div className="hero min-h-screen bg-base-200 justify-betwee">
       <div className="hero-content flex-col lg:flex-row">
-        <img src={project.image} className="max-w-max rounded-lg shadow-2xl" />
+        <img src={project.image} className="max-w-7xl rounded-lg shadow-2xl" />
         <div>
           <h1 className="text-5xl font-bold">{project.title}</h1>
           <p className="py-6">{project.description}</p>
+          <button className="btn btn-primary" onClick={() => navigate(`/modify/${id}`)}>Edit</button>
           <button className="btn btn-primary" onClick={handleDelete}>Delete</button>
         </div>
       </div>
