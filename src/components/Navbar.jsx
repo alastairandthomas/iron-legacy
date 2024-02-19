@@ -99,9 +99,9 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/create">
+        {user ? <Link to="/create">
           <a className="btn">Add Project</a>
-        </Link>
+        </Link>: null}
         {user ? (
           <LoggedNav />
         ) : (
