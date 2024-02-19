@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { db } from '../firebase';
 import axios from "axios";
 
 function ProjectDetailsPage() {
@@ -8,23 +9,20 @@ function ProjectDetailsPage() {
   const navigate = useNavigate();
 
   const [project, setProject] = useState(null);
-  const API_URL = "https://ironhackprojects-backend.adaptable.app";
 
   const handleDelete = () => {
-    axios
-      .delete(`${API_URL}/projects/${id}`);
+    db.collection('projects')
+      .doc(id)
+      .delete();
     navigate(`/projects`);
   }
 
-  const handleModify = () => {
-
-  }
-
   useEffect(() => {
-    axios
-      .get(`${API_URL}/projects/${id}`)
-      .then((response) => setProject(response.data))
-      .catch((err) => console.log(err));
+    if (id) {
+      db.collection('projects')
+        .doc(id)
+        .onSnapshot(project => setProject(project.data()));
+    }
   }, [project]);
 
   return project ? (

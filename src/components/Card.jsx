@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-function Card({ obj }) {
+function Card({ obj, id }) {
   return (
-    <Link to={`/projectdetails/${obj.id}`}>
+    <Link to={`/projectdetails/${id}`}>
       <div className="card w-96 h-104 bg-base-100 shadow-xl grid-cols-1 ">
         <figure>
           <img src={obj.image} className="object-cover w-full h-full" />

@@ -11,10 +11,15 @@ import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import FavoritePage from './pages/FavoritePage';
 import ErrorPage from './pages/ErrorPage';
-import EditPage from './pages/EditPage'
+import EditPage from './pages/EditPage';
+
+import {auth} from './firebase';
+import {useAuthState} from 'react-firebase-hooks/auth';
 
 
 function App() {
+
+  const [user, loading] = useAuthState(auth);
 
   return (
     <>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { db } from '../firebase';
 
 import Form from '../components/Form';
 
@@ -10,14 +11,12 @@ function EditPage() {
     const {id} = useParams();
     const navigate = useNavigate();
 
-    const API_URL = "https://ironhackprojects-backend.adaptable.app";
 
     useEffect(() => {
 
-        axios
-            .get(`${API_URL}/projects/${id}`)
-            .then(response => setInputs(response.data))
-            .catch(err => console.log(err));
+      db.collection('projects')
+        .doc(id)
+        .onSnapshot(project => setInputs(project.data()));
 
     },[])
   
@@ -34,10 +33,12 @@ function EditPage() {
     e.preventDefault();
     //========== HERE THE AXIOS THAT PUSH THE NEW PROJECT
 
-    axios.put(`${API_URL}/projects/${id}`, inputs);
-    console.log(id)
-    navigate(`/projectdetails/${id}`);
-    setInputs({});
+    db.collection('projects')
+        .doc(id)
+        .update(inputs);
+
+    navigate(`/projectdetails/${id}`)
+        
   };
 
   return (

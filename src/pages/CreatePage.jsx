@@ -1,14 +1,12 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {v4 as uuidv4} from 'uuid';
+
 
 import Form from '../components/Form';
+import { db } from "../firebase";
 
 function CreatePage() {
-  const [inputs, setInputs] = useState({id : uuidv4() });
-
-  const API_URL = "https://ironhackprojects-backend.adaptable.app";
+  const [inputs, setInputs] = useState({});
 
   const navigate = useNavigate();
 
@@ -20,10 +18,10 @@ function CreatePage() {
     e.preventDefault();
     //========== HERE THE AXIOS THAT PUSH THE NEW PROJECT
 
-    axios.post(`${API_URL}/projects`, inputs);
+    db.collection('projects')
+      .add(inputs);
 
-    navigate(`/projects`);
-    setInputs({});
+    navigate('/projects');
   };
 
   return (

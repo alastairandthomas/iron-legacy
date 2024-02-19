@@ -2,16 +2,32 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import LoggedNav from './LoggedNav';
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-};
+import { auth, provider } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+// const user = {
+//   name: 'Tom Cook',
+//   email: 'tom@example.com',
+//   imageUrl:
+//     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+// };
 
 // const user = null;
 
 function Navbar() {
+
+  const [user, loading] = useAuthState(auth);
+
+  const signIn = (e) => {
+    e.preventDefault();
+
+    auth.signInWithPopup(provider)
+      .catch(err => alert(err.message));
+    
+  }
+
+  console.log(user);
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -87,9 +103,9 @@ function Navbar() {
           <a className="btn">Add Project</a>
         </Link>
         {user ? (
-          <LoggedNav user={user} />
+          <LoggedNav />
         ) : (
-          <a className="btn ml-4 mr-4">Sign In</a>
+          <a className="btn ml-4 mr-4" onClick={signIn}>Sign In</a>
         )}
       </div>
     </div>

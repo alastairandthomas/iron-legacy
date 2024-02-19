@@ -5,13 +5,14 @@ import axios from 'axios';
 import Card from '../components/Card';
 import { db } from '../firebase';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import { doc } from 'firebase/firestore';
 
 function ProjectsPage() {
   // const [projects, setProjects] = useState(null);
   const [projects, loading, error] = useCollection(db.collection('projects'));
-  const API_URL = 'https://ironhackprojects-backend.adaptable.app';
 
-  console.log(projects);
+
+ 
 
   // useEffect(() => {
   //   axios
@@ -31,7 +32,7 @@ function ProjectsPage() {
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-center gap-8">
           {projects?.docs.map((obj) => {
-            return <Card obj={obj} />;
+            return <Card obj={obj.data()} key={obj.id} id={obj.id}/>;
           })}
         </div>
       </div>
