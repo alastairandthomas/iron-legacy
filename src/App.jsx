@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { useState } from 'react';
 import './App.css';
-=======
-import './App.css'
->>>>>>> 87de1af7c4ac3adc84ccf615bf0f96ecca387353
 import { Route, Routes } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -17,16 +13,11 @@ import FavoritePage from './pages/FavoritePage';
 import ErrorPage from './pages/ErrorPage';
 import EditPage from './pages/EditPage';
 
-<<<<<<< HEAD
 import { auth } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 function App() {
   const [user, loading] = useAuthState(auth);
-=======
-
-function App() {
->>>>>>> 87de1af7c4ac3adc84ccf615bf0f96ecca387353
 
   return (
     <>
