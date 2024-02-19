@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -13,32 +13,27 @@ import FavoritePage from './pages/FavoritePage';
 import ErrorPage from './pages/ErrorPage';
 import EditPage from './pages/EditPage';
 
-import {auth} from './firebase';
-import {useAuthState} from 'react-firebase-hooks/auth';
-
+import { auth } from './firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function App() {
-
   const [user, loading] = useAuthState(auth);
 
   return (
     <>
-    
-    <Navbar />
-    <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/about' element={<AboutPage />} />
-      <Route path='/create' element={<CreatePage />} />
-      <Route path='/projects' element={<ProjectsPage />} />
-      <Route path='/projectdetails/:id' element={<ProjectDetailsPage />} />
-      <Route path='/modify/:id' element={<EditPage />} />
-      <Route path='/favorites' element={<FavoritePage />} />
-      <Route path='*' element={<ErrorPage />} />
-    </Routes>
-   
-    
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/create" element={<CreatePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projectdetails/:id" element={<ProjectDetailsPage />} />
+        <Route path="/modify/:id" element={<EditPage />} />
+        <Route path="/favorites" element={<FavoritePage id={user?.uid} />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
