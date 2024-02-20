@@ -107,10 +107,12 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
                       <span className="label-text">1</span>
                       <input
                         type="radio"
-                        name="module-radio"
-                        value="module1"
+                        name="module"
+                        value="1"
+                        onChange={inputHandler}
                         className="radio checked:bg-blue-500"
-                        checked
+                        checked={inputs.module === "1"}
+                        id="radio1"
                       />
                     </label>
                   </div>
@@ -119,10 +121,13 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
                       <span className="label-text">2</span>
                       <input
                         type="radio"
-                        name="module-radio"
-                        value="module2"
+                        name="module"
+                        value="2"
+                        onChange={inputHandler}
                         className="radio checked:bg-blue-500"
-                        checked
+                        checked={inputs.module === "2"}
+                        
+                        
                       />
                     </label>
                   </div>
@@ -131,10 +136,13 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
                       <span className="label-text">3</span>
                       <input
                         type="radio"
-                        name="module-radio"
-                        value="module3"
+                        name="module"
+                        value="3"
+                        onChange={inputHandler}
                         className="radio checked:bg-blue-500"
-                        checked
+                        checked={inputs.module === "3"}
+              
+                        
                       />
                     </label>
                   </div>
