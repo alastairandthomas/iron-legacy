@@ -35,6 +35,7 @@ function CreatePage() {
   });
 
   const navigate = useNavigate();
+  
   if (!user) {
     navigate(`/`);
   }
