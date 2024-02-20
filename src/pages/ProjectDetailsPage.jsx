@@ -5,6 +5,8 @@ import { db } from '../firebase';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 function ProjectDetailsPage() {
   const { id } = useParams();
@@ -12,6 +14,8 @@ function ProjectDetailsPage() {
   const [user, loading] = useAuthState(auth);
 
   const [project, setProject] = useState(null);
+
+  var projectCall = db.collection('projects').doc(id);
 
   const handleDelete = () => {
     db.collection('projects').doc(id).delete();
@@ -27,8 +31,22 @@ function ProjectDetailsPage() {
     }
   }, [project]);
 
+  const unFav = () => {
+    projectCall.update({
+      FavBy: firebase.firestore.FieldValue.arrayRemove(user.uid),
+    });
+    console.log(project);
+  };
+
+  const doFav = () => {
+    projectCall.update({
+      FavBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
+    });
+    console.log(project);
+  };
+
   const fav = () => {
-    console.log('liked');
+    project.FavBy.includes(user.uid) ? unFav() : doFav();
   };
 
   return project ? (
@@ -66,7 +84,7 @@ function ProjectDetailsPage() {
                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
             </svg>
-            Button
+            Button {project.FavBy.includes(user.uid) ? 'isFav' : 'isNOOOTFav'}
           </button>
         </div>
       </div>

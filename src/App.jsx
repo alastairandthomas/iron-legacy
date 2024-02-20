@@ -19,6 +19,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 function App() {
   const [user, loading] = useAuthState(auth);
 
+  console.log(loading);
+  console.table(user);
+
   return (
     <>
       <Navbar />

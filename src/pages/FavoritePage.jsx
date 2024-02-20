@@ -29,12 +29,9 @@ function FavoritePage() {
     }
   }, [user]);
 
-  console.log(id);
   return (
     <div className="container mx-auto">
       <div className="flex flex-wrap justify-center gap-8">
-        {/* {projects ? JSON.stringify(projects) : 'loading....'} */}
-
         {projects?.map((obj) => {
           return <Card obj={obj.data()} key={obj.id} id={obj.id} />;
         })}
