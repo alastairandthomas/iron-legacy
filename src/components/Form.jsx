@@ -2,10 +2,10 @@ import React from "react";
 
 function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto flex flex-col">
       <form onSubmit={submitHandler}>
         <div className="space-y-24">
-          <div className="border-b border-gray-900/10 pb-12 space-y-4">
+          <div className="border-b border-gray-900/10 pb-12 space-y-4 flex flex-col">
             <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-slate-400">
               {`${task} your Ironhack project`}
             </h2>
@@ -81,7 +81,6 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
               </div>
             </div>
 
-
             <div className="flex justify-between items-center space-y-8">
               <div className="sm:col-span-4 basis-[49%]">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
@@ -143,36 +142,36 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
               </div>
             </div>
             <div className="flex justify-between">
-            <div className="sm:col-span-4 basis-[49%]">
-              <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                Author
-              </label>
-              <div className="mt-2">
-                <input
-                  name="authorName"
-                  type="text"
-                  value={inputs.authorName || ""}
-                  onChange={inputHandler}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
-                  disabled
-                />
+              <div className="sm:col-span-4 basis-[49%]">
+                <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
+                  Author
+                </label>
+                <div className="mt-2">
+                  <input
+                    name="authorName"
+                    type="text"
+                    value={inputs.authorName || ""}
+                    onChange={inputHandler}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
+                    disabled
+                  />
+                </div>
               </div>
-            </div>
-            <div className="sm:col-span-4 basis-[49%]">
-              <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                GitHub Handle
-              </label>
-              <div className="mt-2">
-                <input
-                  name="authorHandle"
-                  type="text"
-                  value={inputs.authorHandle || ""}
-                  onChange={inputHandler}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
-                  disabled
-                />
+              <div className="sm:col-span-4 basis-[49%]">
+                <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
+                  GitHub Handle
+                </label>
+                <div className="mt-2">
+                  <input
+                    name="authorHandle"
+                    type="text"
+                    value={inputs.authorHandle || ""}
+                    onChange={inputHandler}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
+                    disabled
+                  />
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
