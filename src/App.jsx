@@ -29,7 +29,7 @@ function App() {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projectdetails/:id" element={<ProjectDetailsPage />} />
         <Route path="/modify/:id" element={<EditPage />} />
-        <Route path="/favorites" element={<FavoritePage id={user?.uid} />} />
+        <Route path="/favorites" element={<FavoritePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

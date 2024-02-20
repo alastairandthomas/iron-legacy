@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { counter } from '@fortawesome/fontawesome-svg-core';
 
-function FavoritePage({ id }) {
+function FavoritePage() {
   const [user, loading] = useAuthState(auth);
 
   const [projects, setProjects] = useState(null);
@@ -21,15 +21,6 @@ function FavoritePage({ id }) {
         where('FavBy', 'array-contains', user.uid)
       );
       const querySnapshot = await getDocs(q);
-      // querySnapshot.forEach((doc) => {
-      //   setProjects((prev) => {
-      //     if (prev === null) {
-      //       return [doc.data()];
-      //     } else {
-      //       return [...prev, doc.data()];
-      //     }
-      //   });
-      // });
       setProjects(querySnapshot.docs);
     };
 
