@@ -14,8 +14,6 @@ function Navbar() {
     auth.signInWithPopup(provider).catch((err) => alert(err.message));
   };
 
-  console.log(user);
-
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">

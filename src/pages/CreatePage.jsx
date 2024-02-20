@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Form from "../components/Form";
@@ -10,10 +10,24 @@ import { auth } from "../firebase";
 function CreatePage() {
   const [user, loading] = useAuthState(auth);
 
+  useEffect(() => {
+
+      fetch(`https://api.github.com/user/${auth.currentUser.providerData[0].uid}`, {
+        method: "GET",
+        headers: {
+          'Authorization': 'Basic ' + btoa(`bb86a00d59b7ecf4fcda` + ':' + `a18f8f792049c9e824fc1e712f7a2d780007f655`)
+        }
+      })
+    .then(response => response.json())
+    .then(result => setInputs((prev) => ({ ...prev, authorHandle: result.login})))
+    .catch(err => console.log(err));
+
+  },[])
+
   const date = new Date();
 
   const [inputs, setInputs] = useState({
-    author: user.displayName,
+    authorName: user.displayName,
     userId: user.uid,
     userPhoto: user.photoURL,
     FavBy: [],
