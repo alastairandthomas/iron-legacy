@@ -5,26 +5,14 @@ import LoggedNav from './LoggedNav';
 import { auth, provider } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-// const user = {
-//   name: 'Tom Cook',
-//   email: 'tom@example.com',
-//   imageUrl:
-//     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-// };
-
-// const user = null;
-
 function Navbar() {
-
   const [user, loading] = useAuthState(auth);
 
   const signIn = (e) => {
     e.preventDefault();
 
-    auth.signInWithPopup(provider)
-      .catch(err => alert(err.message));
-    
-  }
+    auth.signInWithPopup(provider).catch((err) => alert(err.message));
+  };
 
   console.log(user);
 
@@ -99,13 +87,18 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        {user ? <Link to="/create">
-          <a className="btn">Add Project</a>
-        </Link>: null}
+        {user ? (
+          <Link to="/create">
+            <a className="btn">Add Project</a>
+          </Link>
+        ) : null}
         {user ? (
           <LoggedNav />
         ) : (
-          <a className="btn ml-4 mr-4" onClick={signIn}>Sign In</a>
+          <a className="btn ml-4 mr-4" onClick={signIn}>
+            <i className="fab fa-github text-lg" />
+            Sign In
+          </a>
         )}
       </div>
     </div>

@@ -11,9 +11,6 @@ function ProjectsPage() {
   // const [projects, setProjects] = useState(null);
   const [projects, loading, error] = useCollection(db.collection('projects'));
 
-
- 
-
   // useEffect(() => {
   //   axios
   //     .get(`${API_URL}/projects`)
@@ -32,7 +29,7 @@ function ProjectsPage() {
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-center gap-8">
           {projects?.docs.map((obj) => {
-            return <Card obj={obj.data()} key={obj.id} id={obj.id}/>;
+            return <Card obj={obj.data()} key={obj.id} id={obj.id} />;
           })}
         </div>
       </div>
