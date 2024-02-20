@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getAuth } from 'firebase/auth';
 
 function Card({ obj, id }) {
 
@@ -25,9 +23,7 @@ function Card({ obj, id }) {
             alt="Profile Picture"
           />
           <div className="text-sm">
-            <p className=" leading-none">{obj.author}</p>
-            {/* We will have to generate the date of creation of a project  */}
-            <p className="">{obj.uploadDate}</p>
+            <p className=" leading-none">{`@${obj.authorHandle}`}</p>
           </div>
         </div>
         {/* END OF INFFORMATION ABOUT AUTHOR ======= */}
