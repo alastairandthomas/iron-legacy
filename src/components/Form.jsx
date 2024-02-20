@@ -75,8 +75,8 @@ function Form({
   return (
     <div className="container mx-auto flex flex-col">
       <form onSubmit={submitHandler}>
-        <div className="space-y-24">
-          <div className="border-b border-gray-900/10 pb-12 space-y-4 flex flex-col">
+        <div className="container">
+          <div className="border-b border-gray-900/10 pb-8 space-y-4 flex flex-col">
             <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-slate-400">
               {`${task} your Ironhack project`}
             </h2>
@@ -84,7 +84,7 @@ function Form({
               {/* Share your Ironhack project */}
             </p>
 
-            <div className="sm:col-span-4 ">
+            <div className="sm:col-span-4">
               <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                 Title
               </label>
@@ -116,7 +116,7 @@ function Form({
                   defaultValue={""}
                 />
               </div>
-              {/* <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p> */}
+              
             </div>
 
             <div className="flex justify-between">
@@ -152,17 +152,16 @@ function Form({
               </div>
             </div>
 
-            <div className="flex justify-between items-center space-y-8">
+            <div className="flex justify-between">
               <div className="sm:col-span-4 basis-[49%]">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                   Screenshot
                 </label>
                 <div className="mt-2">
                   <input
-                    name="image"
                     type="file"
                     onChange={imgUploadHandler}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="file-input file-input-bordered file-input-primary w-full max-w-xs"
                   />
                 </div>
               </div>
@@ -171,47 +170,35 @@ function Form({
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                   Module
                 </label>
-                <div className="flex justify-around">
-                  <div className="form-control">
-                    <label className="label cursor-pointer space-x-4">
-                      <span className="label-text">1</span>
-                      <input
-                        type="radio"
-                        name="module"
-                        value="1"
-                        onChange={inputHandler}
-                        className="radio checked:bg-blue-500"
-                        checked={inputs.module === "1"}
-                        id="radio1"
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control">
-                    <label className="label cursor-pointer space-x-4">
-                      <span className="label-text">2</span>
-                      <input
-                        type="radio"
-                        name="module"
-                        value="2"
-                        onChange={inputHandler}
-                        className="radio checked:bg-blue-500"
-                        checked={inputs.module === "2"}
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control">
-                    <label className="label cursor-pointer space-x-4">
-                      <span className="label-text">3</span>
-                      <input
-                        type="radio"
-                        name="module"
-                        value="3"
-                        onChange={inputHandler}
-                        className="radio checked:bg-blue-500"
-                        checked={inputs.module === "3"}
-                      />
-                    </label>
-                  </div>
+                <div className="flex justify-evenly space-y-4">
+                <span />
+                <span className="label-text">1</span>
+                  <input
+                    type="radio"
+                    name="module"
+                    value="1"
+                    onChange={inputHandler}
+                    className="radio radio-primary"
+                    checked={inputs.module === "1"}
+                  />
+                  <span className="label-text">2</span>
+                  <input
+                    type="radio"
+                    name="module"
+                    value="2"
+                    onChange={inputHandler}
+                    className="radio radio-primary"
+                    checked={inputs.module === "2"}
+                  />
+                  <span className="label-text">3</span>
+                  <input
+                    type="radio"
+                    name="module"
+                    value="3"
+                    onChange={inputHandler}
+                    className="radio radio-primary"
+                    checked={inputs.module === "3"}
+                  />
                 </div>
               </div>
             </div>
@@ -250,7 +237,7 @@ function Form({
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-end gap-x-6">
+        <div className="mt-7 flex items-center justify-end gap-x-6">
           <button
             type="button"
             className="text-sm font-semibold leading-6 text-gray-900"
