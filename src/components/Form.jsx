@@ -1,16 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 
-function Form({ inputs, setInputs, submitHandler, inputHandler, navigate, task }) {
-  
-  
-
-
-  const [progressPercent, setProgressPercent] = useState(0);
-
+function Form({
+  inputs,
+  setInputs,
+  submitHandler,
+  inputHandler,
+  navigate,
+  task,
+}) {
   const imgUploadHandler = (e) => {
     e.preventDefault();
 
@@ -22,7 +23,9 @@ function Form({ inputs, setInputs, submitHandler, inputHandler, navigate, task }
 
     uploadTask.on(
       "state_changed",
-      (snapshot) => {console.log(snapshot)},
+      (snapshot) => {
+        console.log(snapshot);
+      },
       (err) => {
         console.log(err);
       },
@@ -33,6 +36,41 @@ function Form({ inputs, setInputs, submitHandler, inputHandler, navigate, task }
       }
     );
   };
+
+  useEffect(() => {
+    if (inputs.githubRepo) {
+      let urlEnding = inputs.githubRepo;
+
+      urlEnding = urlEnding.replace("https://github.com/", "");
+      urlEnding = urlEnding.replace("https://www.github.com/", "");
+      urlEnding = urlEnding.replace("http://www.github.com/", "");
+      urlEnding = urlEnding.replace("http://github.com/", "");
+
+      if (urlEnding[urlEnding.length - 1] === `/`) {
+        urlEnding = urlEnding.slice(0, urlEnding.length - 1);
+      }
+
+      console.log(urlEnding);
+
+      fetch(`https://api.github.com/repos/${urlEnding}/languages`, {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Basic " +
+            btoa(
+              `bb86a00d59b7ecf4fcda` +
+                ":" +
+                `a18f8f792049c9e824fc1e712f7a2d780007f655`
+            ),
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          setInputs((prev) => ({ ...prev, tags: Object.keys(result) }));
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [inputs.githubRepo]);
 
   return (
     <div className="container mx-auto flex flex-col">
