@@ -15,6 +15,7 @@ import EditPage from './pages/EditPage';
 
 import { auth } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import MyProjects from './pages/MyProjects';
 
 function App() {
   const [user, loading] = useAuthState(auth);
@@ -33,6 +34,7 @@ function App() {
         <Route path="/projectdetails/:id" element={<ProjectDetailsPage />} />
         <Route path="/modify/:id" element={<EditPage />} />
         <Route path="/favorites" element={<FavoritePage />} />
+        <Route path="/MyProjects" element={<MyProjects />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

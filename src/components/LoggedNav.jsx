@@ -6,29 +6,25 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 
-
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 function LoggedNav() {
-
   const navigate = useNavigate();
 
   const [user, loading] = useAuthState(auth);
 
   const goToProjects = () => {
-    navigate(`/projects`);
-  }
+    navigate(`/MyProjects`);
+  };
 
   const logOut = () => {
     signOut(auth);
-
-  }
+  };
 
   const userNavigation = [
-    { name: 'My Projects', onClick: "goToProjects" },
-    { name: 'Sign out', href: '#' , onClick: 'logOut'},
+    { name: 'My Projects', onClick: 'goToProjects' },
+    { name: 'Sign out', href: '#', onClick: 'logOut' },
   ];
 
   return (
@@ -56,7 +52,13 @@ function LoggedNav() {
               <Menu.Item key={item.name}>
                 {({ active }) => (
                   <a
-                    onClick={item.onClick === "goToProjects" ? goToProjects : (item.onClick === "logOut" ? logOut : null)}
+                    onClick={
+                      item.onClick === 'goToProjects'
+                        ? goToProjects
+                        : item.onClick === 'logOut'
+                        ? logOut
+                        : null
+                    }
                     className={classNames(
                       active ? 'bg-gray-100' : '',
                       'block px-4 py-2 text-sm text-gray-700'

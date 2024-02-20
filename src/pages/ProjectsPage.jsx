@@ -8,27 +8,16 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import { doc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
+import FilterSection from '../components/FilterSection';
 
 function ProjectsPage() {
   // const [projects, setProjects] = useState(null);
   const [projects, loading, error] = useCollection(db.collection('projects'));
   const [user] = useAuthState(auth);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API_URL}/projects`)
-  //     .then((response) => setProjects(response.data))
-  //     .catch((err) => console.log(err));
-  // }, [projects]);
-
   return (
-    <>
-      <section className="container flex justify-center">
-        <h1> All IronHack Projects </h1>
-      </section>
-      <div className="container flex flex-row-reverse">
-        <h3>Filter</h3>
-      </div>
+    <div className=" flex flex-col gap-6">
+      <FilterSection />
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-center gap-8">
           {projects?.docs.map((obj) => {
@@ -40,13 +29,13 @@ function ProjectsPage() {
                 obj={obj.data()}
                 key={obj.id}
                 id={obj.id}
-                isFav={obj.data().FavBy.includes(user.uid)}
+                isFav={obj.data().FavBy.includes(user?.uid)}
               />
             );
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

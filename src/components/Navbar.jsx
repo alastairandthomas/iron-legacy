@@ -53,9 +53,11 @@ function Navbar() {
                 <a>Projects</a>
               </li>
             </Link>
-            <Link to="/favorites">
-              <li>My Favorites</li>
-            </Link>
+            {user && (
+              <Link to="/favorites">
+                <li>My Favorites</li>
+              </Link>
+            )}
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">Ironhack Projects</a>
@@ -77,11 +79,13 @@ function Navbar() {
               <a>Projects</a>
             </li>
           </Link>
-          <Link to="/favorites">
-            <li>
-              <a>My Favorites</a>
-            </li>
-          </Link>
+          {user && (
+            <Link to="/favorites">
+              <li>
+                <a>My Favorites</a>
+              </li>
+            </Link>
+          )}
         </ul>
       </div>
       <div className="navbar-end">

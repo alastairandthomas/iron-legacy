@@ -8,9 +8,10 @@ import { auth } from '../firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
-function ProjectDetailsPage() {
+function ProjectDetailsPage(props) {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [user, loading] = useAuthState(auth);
 
   const [project, setProject] = useState(null);
@@ -33,20 +34,20 @@ function ProjectDetailsPage() {
 
   const unFav = () => {
     projectCall.update({
-      FavBy: firebase.firestore.FieldValue.arrayRemove(user.uid),
+      FavBy: firebase.firestore.FieldValue.arrayRemove(user?.uid),
     });
     console.log(project);
   };
 
   const doFav = () => {
     projectCall.update({
-      FavBy: firebase.firestore.FieldValue.arrayUnion(user.uid),
+      FavBy: firebase.firestore.FieldValue.arrayUnion(user?.uid),
     });
     console.log(project);
   };
 
   const fav = () => {
-    project.FavBy.includes(user.uid) ? unFav() : doFav();
+    project.FavBy.includes(user?.uid) ? unFav() : doFav();
   };
 
   return project ? (
@@ -56,7 +57,7 @@ function ProjectDetailsPage() {
         <div>
           <h1 className="text-5xl font-bold">{project.title}</h1>
           <p className="py-6">{project.description}</p>
-          {project.userId === user.uid ? (
+          {project.userId === user?.uid ? (
             <>
               <button
                 className="btn btn-primary"
@@ -69,22 +70,29 @@ function ProjectDetailsPage() {
               </button>
             </>
           ) : null}
-          <button className="btn" onClick={fav}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-            Button {project.FavBy.includes(user.uid) ? 'isFav' : 'isNOOOTFav'}
+
+          {user && (
+            <button className="btn" onClick={fav}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+              Button {project.FavBy.includes(user.uid) ? 'isFav' : 'isNOOOTFav'}
+            </button>
+          )}
+
+          <button className="btn btn-primary" onClick={() => navigate(-1)}>
+            Back
           </button>
         </div>
       </div>
