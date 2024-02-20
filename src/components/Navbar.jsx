@@ -40,17 +40,17 @@ function Navbar() {
           >
             <Link to="/">
               <li>
-                <a>Home</a>
+                <span>Home</span>
               </li>
             </Link>
             <Link to="/about">
               <li>
-                <a>About</a>
+                <span>About</span>
               </li>
             </Link>
             <Link to="/projects">
               <li>
-                <a>Projects</a>
+                <span>Projects</span>
               </li>
             </Link>
             {user && (
@@ -60,29 +60,29 @@ function Navbar() {
             )}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Ironhack Projects</a>
+        <span className="btn btn-ghost text-xl">Ironhack Projects</span>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <Link to="/">
             <li>
-              <a>Home</a>
+              <span>Home</span>
             </li>
           </Link>
           <Link to="/about">
             <li>
-              <a>About</a>
+              <span>About</span>
             </li>
           </Link>
           <Link to="/projects">
             <li>
-              <a>Projects</a>
+              <span>Projects</span>
             </li>
           </Link>
           {user && (
             <Link to="/favorites">
               <li>
-                <a>My Favorites</a>
+                <span>My Favorites</span>
               </li>
             </Link>
           )}
@@ -91,16 +91,16 @@ function Navbar() {
       <div className="navbar-end">
         {user ? (
           <Link to="/create">
-            <a className="btn">Add Project</a>
+            <span className="btn">Add Project</span>
           </Link>
         ) : null}
         {user ? (
           <LoggedNav />
         ) : (
-          <a className="btn ml-4 mr-4" onClick={signIn}>
+          <span className="btn ml-4 mr-4" onClick={signIn}>
             <i className="fab fa-github text-lg" />
             Sign In
-          </a>
+          </span>
         )}
       </div>
     </div>

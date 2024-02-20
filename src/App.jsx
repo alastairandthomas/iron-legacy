@@ -20,8 +20,7 @@ import MyProjects from './pages/MyProjects';
 function App() {
   const [user, loading] = useAuthState(auth);
 
-  console.log(loading);
-  console.table(user);
+  
 
   return (
     <>

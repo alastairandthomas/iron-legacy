@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
 
@@ -44,6 +43,7 @@ function EditPage() {
   return (
     <Form
       inputs={inputs}
+      setInputs={setInputs}
       inputHandler={inputHandler}
       submitHandler={submitHandler}
       navigate={navigate}

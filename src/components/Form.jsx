@@ -1,6 +1,39 @@
 import React from "react";
+import { useState } from "react";
+import { storage } from "../firebase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
 
-function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
+function Form({ inputs, setInputs, submitHandler, inputHandler, navigate, task }) {
+  
+  
+
+
+  const [progressPercent, setProgressPercent] = useState(0);
+
+  const imgUploadHandler = (e) => {
+    e.preventDefault();
+
+    const fileName = uuidv4();
+    const file = e.target.files[0];
+
+    const storageRef = ref(storage, `images/${fileName}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {console.log(snapshot)},
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setInputs((prev) => ({ ...prev, image: downloadURL }));
+        });
+      }
+    );
+  };
+
   return (
     <div className="container mx-auto flex flex-col">
       <form onSubmit={submitHandler}>
@@ -90,8 +123,7 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
                   <input
                     name="image"
                     type="file"
-                    value={inputs.image || ""}
-                    onChange={inputHandler}
+                    onChange={imgUploadHandler}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -126,8 +158,6 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
                         onChange={inputHandler}
                         className="radio checked:bg-blue-500"
                         checked={inputs.module === "2"}
-                        
-                        
                       />
                     </label>
                   </div>
@@ -141,8 +171,6 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
                         onChange={inputHandler}
                         className="radio checked:bg-blue-500"
                         checked={inputs.module === "3"}
-              
-                        
                       />
                     </label>
                   </div>
@@ -167,7 +195,7 @@ function Form({ inputs, submitHandler, inputHandler, navigate, task }) {
               </div>
               <div className="sm:col-span-4 basis-[49%]">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                  GitHub Handle
+                  GitHub Username
                 </label>
                 <div className="mt-2">
                   <input

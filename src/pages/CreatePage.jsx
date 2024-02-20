@@ -46,6 +46,8 @@ function CreatePage() {
   const submitHandler = (e) => {
     e.preventDefault();
 
+    
+
     db.collection("projects").add(inputs);
 
     navigate("/projects");
@@ -54,6 +56,7 @@ function CreatePage() {
   return (
     <Form
       inputs={inputs}
+      setInputs={setInputs}
       inputHandler={inputHandler}
       submitHandler={submitHandler}
       task="Submit"
