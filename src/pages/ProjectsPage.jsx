@@ -1,11 +1,6 @@
-import sample from '../assets/sample.json';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Card from '../components/Card';
 import { db } from '../firebase';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { doc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import FilterSection from '../components/FilterSection';
