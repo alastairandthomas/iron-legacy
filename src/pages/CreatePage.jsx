@@ -9,7 +9,7 @@ import { auth } from "../firebase";
 
 function CreatePage() {
   const [user, loading] = useAuthState(auth);
-
+  
   useEffect(() => {
 
       fetch(`https://api.github.com/user/${auth.currentUser.providerData[0].uid}`, {
