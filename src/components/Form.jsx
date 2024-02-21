@@ -92,8 +92,24 @@ function Form({
                 <input
                   name="title"
                   type="text"
-                  placeholder="My Project"
+                  placeholder="Ironhack Projects"
                   value={inputs.title || ""}
+                  onChange={inputHandler}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div className="sm:col-span-4">
+              <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
+                Headline
+              </label>
+              <div className="mt-2">
+                <input
+                  name="headline"
+                  type="text"
+                  placeholder="Providing a showcase for students in the January '24 cohort of Ironhack's Remote Web Development Bootcamp."
+                  value={inputs.headline || ""}
                   onChange={inputHandler}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -108,7 +124,7 @@ function Form({
                 <textarea
                   name="description"
                   type="text"
-                  placeholder="e.g. Ironhack Projects allows users to upload and showcase their projects. We implemented Firebase to handle user authorisation and meet our database requirements"
+                  placeholder="The SPA (single page application) was built using React and uses the Tailwind framework for styling. During the initial development process we utilised Adaptable to set up a mock JSON server, as this didn't meet our data persistence requirements, we implemented Firebase as our database. User authorisation functionality is also handled by Firebase. "
                   value={inputs.description || ""}
                   onChange={inputHandler}
                   rows={3}
@@ -119,23 +135,23 @@ function Form({
               
             </div>
 
-            <div className="flex justify-between">
-              <div className="sm:col-span-4 basis-[49%]">
+            <div className="flex justify-between flex-wrap">
+              <div className="lg:basis-[49%] basis-full">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                   GitHub Repository
                 </label>
                 <div className="mt-2">
                   <input
                     name="githubRepo"
-                    placeholder="https://github.com/me/project"
+                    placeholder="https://github.com/alastairandthomas/ironhack-projects"
                     type="url"
                     value={inputs.githubRepo || ""}
                     onChange={inputHandler}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-              <div className="sm:col-span-4 basis-[49%]">
+              <div className="lg:basis-[49%] basis-full">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                   Project Link
                 </label>
@@ -143,21 +159,21 @@ function Form({
                   <input
                     name="projectLink"
                     type="url"
-                    placeholder="https://myproject.netlify.com"
+                    placeholder="https://ironhack-projects.netlify.com"
                     value={inputs.projectLink || ""}
                     onChange={inputHandler}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-between">
-              <div className="sm:col-span-4 basis-[49%]">
+            <div className="flex lg:justify-between flex-wrap mt-6">
+              <div className="lg:basis-[49%] basis-full">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                   Screenshot
                 </label>
-                <div className="mt-2">
+                <div className="mt-2 flex md:justify-center">
                   <input
                     type="file"
                     onChange={imgUploadHandler}
@@ -166,7 +182,7 @@ function Form({
                 </div>
               </div>
 
-              <div className="sm:col-span-4 basis-[49%]">
+              <div className="lg:basis-[49%] basis-full mt-6">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                   Module
                 </label>
@@ -198,38 +214,6 @@ function Form({
                     onChange={inputHandler}
                     className="radio radio-primary"
                     checked={inputs.module === "3"}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="sm:col-span-4 basis-[49%]">
-                <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                  Author
-                </label>
-                <div className="mt-2">
-                  <input
-                    name="authorName"
-                    type="text"
-                    value={inputs.authorName || ""}
-                    onChange={inputHandler}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-4 basis-[49%]">
-                <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                  GitHub Username
-                </label>
-                <div className="mt-2">
-                  <input
-                    name="authorHandle"
-                    type="text"
-                    value={inputs.authorHandle || ""}
-                    onChange={inputHandler}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-200  focus:ring-2  sm:text-sm sm:leading-6"
-                    disabled
                   />
                 </div>
               </div>

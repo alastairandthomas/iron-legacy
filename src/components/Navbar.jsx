@@ -55,7 +55,7 @@ function Navbar() {
             </Link>
             {user && (
               <Link to="/favorites">
-                <li>My Favorites</li>
+                <li><span>My Favorites</span></li>
               </Link>
             )}
           </ul>
