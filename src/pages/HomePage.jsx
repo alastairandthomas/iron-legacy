@@ -36,7 +36,8 @@ function HomePage() {
               Ironhack Projects
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              We created this website to showcase the projects developed by the January '24 cohort of our Remote Web Development Bootcamp.
+              We created this website to showcase the projects developed by the
+              January '24 cohort of our Remote Web Development Bootcamp.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link to="/projects">
