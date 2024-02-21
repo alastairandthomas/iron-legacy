@@ -49,7 +49,7 @@ function FilterSection({ changeSearchState, changeCheckedState }) {
                         >
                           <input
                             id="horizontal-list-react"
-                            name="module1"
+                            name="1"
                             type="checkbox"
                             onChange={handleCheckedChange}
                             class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-0"
@@ -95,7 +95,7 @@ function FilterSection({ changeSearchState, changeCheckedState }) {
                           <input
                             id="horizontal-list-vue"
                             type="checkbox"
-                            name="module2"
+                            name="2"
                             onChange={handleCheckedChange}
                             class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-0"
                           />
@@ -140,7 +140,7 @@ function FilterSection({ changeSearchState, changeCheckedState }) {
                           <input
                             id="horizontal-list-svelte"
                             type="checkbox"
-                            name="module3"
+                            name="3"
                             onChange={handleCheckedChange}
                             class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-0"
                           />

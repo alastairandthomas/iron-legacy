@@ -12,20 +12,30 @@ function ProjectsPage() {
   // const [projects, loading, error] = useCollection(db.collection('projects'));
   const [user] = useAuthState(auth);
   const [search, setSearch] = useState('');
-  const [isChecked, setIsChecked] = useState({
-    module1: false,
-    module2: false,
-    module3: false,
-  });
+  const [isChecked, setIsChecked] = useState({});
   const [projects, setProjects] = useState(null);
+
+  const fetchModuleProject = () => {
+    var isCLicked = false;
+    const conditionalArr = [];
+    for (const [key, value] of Object.entries(isChecked)) {
+      if (value) {
+        isCLicked = true;
+        conditionalArr.push(key);
+      }
+    }
+    return isCLicked
+      ? query(collection(db, 'projects'), where('module', 'in', conditionalArr))
+      : query(collection(db, 'projects'));
+  };
 
   const fetchProjects = async (input) => {
     if (!input) {
-      const q = query(collection(db, 'projects'));
+      const q = fetchModuleProject();
       const querySnapshot = await getDocs(q);
       setProjects(querySnapshot.docs);
     } else if (input) {
-      const q = query(collection(db, 'projects'));
+      const q = fetchModuleProject();
       const querySnapshot = await getDocs(q);
       const filteredProjects = querySnapshot.docs.filter((doc) =>
         doc.data().title.toLowerCase().includes(input.toLowerCase())
@@ -55,14 +65,6 @@ function ProjectsPage() {
     setIsChecked((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };
 
-  // const handleSearch = (search) => {
-  //   console.log(search);
-  // };
-
-  // const handleChecked = (checked) => {
-  //   console.log(checked);
-  // };
-
   return (
     <div className=" flex flex-col gap-6">
       <FilterSection
@@ -72,9 +74,6 @@ function ProjectsPage() {
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-center gap-8">
           {projects?.map((obj) => {
-            {
-              /* console.log(obj.data().FavBy.includes(user.uid)); */
-            }
             return (
               <Card
                 obj={obj.data()}
