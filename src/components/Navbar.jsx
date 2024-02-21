@@ -91,7 +91,7 @@ function Navbar() {
       <div className="navbar-end">
         {user ? (
           <Link to="/create">
-            <span className="btn">Add Project</span>
+            <span className="btn btn-xs md:btn-md">Add Project</span>
           </Link>
         ) : null}
         {user ? (

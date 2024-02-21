@@ -51,72 +51,74 @@ function ProjectDetailsPage(props) {
   };
 
   return project ? (
-    <div className="hero min-h-screen bg-base-200 justify-between">
-      <div className="hero-content flex-col">
-        <img src={project.image} className="w-[80%] rounded-lg shadow-2xl" />
-        <div className="">
-          <div className="flex justify-between">
-            <h1 className="text-5xl font-bold">{project.title}</h1>
-            {user && (
-              <button onClick={fav}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    fill={project.FavBy.includes(user.uid) ? "pink" : "none"}
-                  />
-                </svg>
-              </button>
-            )}
-          </div>
+    <div className="flex justify-evenly flex-wrap mt-[5%] lg:mt-[10%]">
+      <img src={project.image} className="w-5/6 lg:w-1/2 rounded-lg shadow-2xl" />
 
-          <p className="py-2">{project.headline}</p>
-          <p className="py-2">{project.description}</p>
-          <p className="py-6">
-            <a href={project.projectLink}>View Project</a>
-          </p>
-          <div className="flex justify-between">
-            <p className="py-2">Module {project.module}</p>
-            <p className="py-2">
-              Project By:{" "}
-              <a href={`https://github.com/${project.authorHandle}`}>
-                @{project.authorHandle}
-              </a>
-            </p>
-          </div>
-
-          <div className="py-4 flex justify-evenly">
-            {project.tags.map((tag) => {
-              return <span>{tag}</span>;
-            })}
-          </div>
-
-          <div className="flex md:justify-between justify-center flex-wrap-reverse">
-            <button className="btn btn-primary mx-1" onClick={() => navigate(-1)}>
-              Back
+      <div className="w-5/6 h-full lg:w-2/6 lg:h-4/5 flex flex-col justify-evenly mt-[10%] md:mt-[5%] lg:mt-0">
+        <div className="flex justify-between">
+          <h1 className="text-4xl font-bold m-3">{project.title}</h1>
+          {user && (
+            <button onClick={fav}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8 m-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  fill={project.FavBy.includes(user.uid) ? "pink" : "none"}
+                />
+              </svg>
             </button>
-            {project.userId === user?.uid ? (
-              <div>
-                <button
-                  className="btn btn-warning mx-1"
-                  onClick={() => navigate(`/modify/${id}`)}
-                >
-                  Edit
-                </button>
-                <button className="btn btn-error mx-1" onClick={handleDelete}>
-                  Delete
-                </button>
-              </div>
-            ) : null}
+          )}
+        </div>
+
+        <p className="m-2 mt-6">{project.headline}</p>
+        <p className="m-2">{project.description}</p>
+        <div className="flex justify-between items-center mx-2 mt-6">
+        <div className="flex items-center">
+          <img
+            className="w-10 h-10 rounded-full mr-5"
+            src={project.userPhoto}
+            alt="Profile Picture"
+          />
+          <div className="text-sm">
+            <p className="leading-none">{`@${project.authorHandle}`}</p>
           </div>
+        </div>
+        {project.userId === user?.uid ? (
+            <div>
+              <button
+                className="btn btn-outline btn-warning m-4"
+                onClick={() => navigate(`/modify/${id}`)}
+              >
+                Edit
+              </button>
+              <button className="btn btn-outline btn-error" onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
+          ) : null}
+          
+        </div>
+        
+
+        {/* <div className="flex justify-between mt-[10%]">
+          {project.tags.map((tag) => {
+            return <span className="kbd">{tag}</span>;
+          })}
+        </div> */}
+
+        <div className="flex justify-between flex-wrap-reverse mx-2">
+          <button className="btn" onClick={() => navigate(-1)}>
+            Back
+          </button>
+          <a className="btn btn-primary" href={project.projectLink}>View Project</a>
         </div>
       </div>
     </div>
