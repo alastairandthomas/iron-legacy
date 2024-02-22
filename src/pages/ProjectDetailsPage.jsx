@@ -86,6 +86,7 @@ function ProjectDetailsPage(props) {
 
         <p className="m-2 mt-6">{project.headline}</p>
         <p className="m-2">{project.description}</p>
+        <progress class="progress w-56" value="10" max="100"></progress>
         <div className="flex justify-between items-center mx-2 mt-6">
         <div className="flex items-center">
           <img
