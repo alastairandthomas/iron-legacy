@@ -1,6 +1,25 @@
 import { Link } from 'react-router-dom';
 
 function Card({ obj, id, isFav }) {
+  const displayModuleColor = () => {
+    let color = '';
+    switch (obj.module) {
+      case '1':
+        color = 'bg-red-400';
+        break;
+      case '2':
+        color = 'bg-blue-400';
+        break;
+      case '3':
+        color = 'bg-yellow-400';
+        break;
+    }
+    console.log(color);
+    return color;
+  };
+
+  console.log(displayModuleColor());
+
   return (
     <Link to={`/projectdetails/${id}`}>
       <div className="card w-96 h-104 bg-base-100 shadow-xl m-10">
@@ -28,15 +47,9 @@ function Card({ obj, id, isFav }) {
 
         {/* TAG AT THE BOTTOM OF THE CARD THAT'LL SHOW QUICK INFORMATION ABOUT THE PROJECT  ======================= */}
         <div class="px-6 pt-4 pb-2">
-          {obj.tags
-            ? obj.tags.map((tag) => {
-                return (
-                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                    {`#${tag}`}
-                  </span>
-                );
-              })
-            : null}
+          <span
+            className={` inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 ${displayModuleColor()}`}
+          >{`module-${obj.module}`}</span>
         </div>
         {/* END THE THE TAGS ============ */}
       </div>
