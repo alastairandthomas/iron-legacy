@@ -109,8 +109,13 @@ function Form({
                 placeholder="Ironhack Projects"
                 value={inputs.title || ''}
                 onChange={inputHandler}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="peer invalid:border-pink-500 invalid:text-pink-600
+                focus:invalid:border-pink-500 focus:invalid:ring-pink-500 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                required
               />
+              <p class="mt-2 invisible peer-invalid:visible text-gray-400 text-sm">
+                Please provide a name for your project.
+              </p>
             </div>
           </div>
 
@@ -125,8 +130,13 @@ function Form({
                 placeholder="Providing a showcase for students in the January '24 cohort of Ironhack's Remote Web Development Bootcamp."
                 value={inputs.headline || ''}
                 onChange={inputHandler}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="peer invalid:border-pink-500 invalid:text-pink-600
+                focus:invalid:border-pink-500 focus:invalid:ring-pink-500 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                required
               />
+              <p class="mt-2 invisible peer-invalid:visible text-gray-400 text-sm">
+                Please enter a brief summary of your project.
+              </p>
             </div>
           </div>
 
@@ -142,9 +152,14 @@ function Form({
                 value={inputs.description || ''}
                 onChange={inputHandler}
                 rows={3}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="peer invalid:border-pink-500 invalid:text-pink-600
+                focus:invalid:border-pink-500 focus:invalid:ring-pink-500 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue={''}
+                required
               />
+              <p class="mt-2 invisible peer-invalid:visible text-gray-400 text-sm">
+                Please provide more information on your project.
+              </p>
             </div>
           </div>
 
@@ -160,8 +175,14 @@ function Form({
                   type="url"
                   value={inputs.githubRepo || ''}
                   onChange={inputHandler}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="peer invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required
                 />
+                <p class="mt-2 invisible peer-invalid:visible text-gray-400 text-sm">
+                  Please provide a link to the GitHub repository for the
+                  project. (including "https://")
+                </p>
               </div>
             </div>
             <div className="lg:basis-[49%] basis-full">
@@ -175,8 +196,14 @@ function Form({
                   placeholder="https://ironhack-projects.netlify.com"
                   value={inputs.projectLink || ''}
                   onChange={inputHandler}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="peer invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required
                 />
+                <p class="mt-2 invisible peer-invalid:visible text-gray-400 text-sm">
+                  Please provide a link to your live project. (including
+                  "https://")
+                </p>
               </div>
             </div>
           </div>
@@ -201,9 +228,14 @@ function Form({
                   <input
                     type="file"
                     onChange={imgUploadHandler}
-                    className="file-input file-input-bordered file-input-primary w-full max-w-xs"
+                    className="peer invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 file-input file-input-bordered file-input-primary w-full max-w-xs"
+                    required
                   />
                 )}
+                <p class="mt-2 invisible peer-invalid:visible text-gray-400 text-sm">
+                  Please upload a screenshot from your project.
+                </p>
               </div>
             </div>
 
@@ -219,8 +251,10 @@ function Form({
                   name="module"
                   value="1"
                   onChange={inputHandler}
-                  className="radio radio-primary"
+                  className="peer radio radio-primary invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                   checked={inputs.module === '1'}
+                  required
                 />
                 <span className="label-text">2</span>
                 <input
@@ -228,8 +262,10 @@ function Form({
                   name="module"
                   value="2"
                   onChange={inputHandler}
-                  className="radio radio-primary"
+                  className="peer radio radio-primary invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                   checked={inputs.module === '2'}
+                  required
                 />
                 <span className="label-text">3</span>
                 <input
@@ -237,9 +273,14 @@ function Form({
                   name="module"
                   value="3"
                   onChange={inputHandler}
-                  className="radio radio-primary"
+                  className="peer radio radio-primary invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                   checked={inputs.module === '3'}
+                  required
                 />
+                <p class="mt-2 invisible peer-invalid:visible text-gray-400 text-sm">
+                  Please select the module your project was for.
+                </p>
               </div>
             </div>
           </div>
