@@ -48,6 +48,7 @@ function EditPage() {
       submitHandler={submitHandler}
       navigate={navigate}
       task="Edit"
+      id={id}
     />
   );
 }

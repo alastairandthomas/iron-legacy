@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { db } from "../firebase";
+import {deleteField} from 'firebase/firestore';
 
 function Form({
   inputs,
@@ -11,7 +13,11 @@ function Form({
   inputHandler,
   navigate,
   task,
+  id
 }) {
+
+
+
   const imgUploadHandler = (e) => {
     e.preventDefault();
 
@@ -36,6 +42,23 @@ function Form({
       }
     );
   };
+
+  console.log(id);
+
+  const deleteImg = (e) => {
+
+    e.preventDefault();
+
+    db
+      .collection("projects")
+      .doc(id)
+      .update({
+        image: deleteField()
+      });
+
+    inputs.image = null;
+
+  }
 
   useEffect(() => {
     if (inputs.githubRepo) {
@@ -73,9 +96,9 @@ function Form({
   }, [inputs.githubRepo]);
 
   return (
-    <div className="container mx-auto flex flex-col">
+    
       <form onSubmit={submitHandler}>
-        <div className="container">
+        <div className="container w-[90%] mt-2">
           <div className="border-b border-gray-900/10 pb-8 space-y-4 flex flex-col">
             <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-slate-400">
               {`${task} your Ironhack project`}
@@ -169,20 +192,27 @@ function Form({
             </div>
 
             <div className="flex lg:justify-between flex-wrap mt-6">
-              <div className="lg:basis-[49%] basis-full">
-                <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                  Screenshot
-                </label>
-                <div className="mt-2 flex md:justify-center">
-                  <input
-                    type="file"
-                    onChange={imgUploadHandler}
-                    className="file-input file-input-bordered file-input-primary w-full max-w-xs"
-                  />
-                </div>
-              </div>
+            <div className="lg:basis-[49%] basis-full">
+            <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
+              Screenshot
+            </label>
+            <div className="flex flex-col items-center mt-6">
+              {inputs.image ? (
+                <>
+                <img className="w-[70%]" src={inputs.image} />
+                <button className="btn btn-outline btn-error mt-6" onClick={deleteImg}>Delete</button>
+                </>
+              ) : (
+                <input
+                  type="file"
+                  onChange={imgUploadHandler}
+                  className="file-input file-input-bordered file-input-primary w-full max-w-xs"
+                />
+              )}
+            </div>
+          </div>
 
-              <div className="lg:basis-[49%] basis-full mt-6">
+              <div className="lg:basis-[49%] basis-full">
                 <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
                   Module
                 </label>
@@ -221,7 +251,7 @@ function Form({
           </div>
         </div>
 
-        <div className="mt-7 flex items-center justify-end gap-x-6">
+        <div className="w-[90%] mt-7 flex items-center justify-end gap-x-6">
           <button
             type="button"
             className="text-sm font-semibold leading-6 text-gray-900"
@@ -239,7 +269,7 @@ function Form({
           </button>
         </div>
       </form>
-    </div>
+    
   );
 }
 
