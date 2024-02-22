@@ -1,4 +1,13 @@
 import ProfileCard from '../components/ProfileCard';
+import HTML from '../assets/html.png';
+
+import JavaScript from '../assets/javascript.png';
+import ReactImg from '../assets/react.png';
+
+import FireBase from '../assets/firebase.png';
+
+import GitHub from '../assets/github.png';
+import Tailwind from '../assets/tailwind.png';
 
 const alastair = {
   name: 'Alastair Longmuir',
@@ -16,11 +25,11 @@ const thomas = {
 
 function AboutPage() {
   return (
-    <div className="container">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          About us
-        </h1>
+    <div className="container flex flex pt-6">
+      <div className="">
+        <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          About our project
+        </h2>
         <p className="mt-6 text-lg leading-8 text-gray-600">
           Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
           cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
@@ -28,12 +37,37 @@ function AboutPage() {
           qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
           fugiat aliqua.
         </p>
+        <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-4 text-center py-8">
+          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+            <img className="w-20 mx-auto" src={HTML} alt="HTML icon" />
+            <p className="my-4">HTML</p>
+          </div>
+          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+            <img className="w-20 mx-auto" src={Tailwind} alt="HTML icon" />
+            <p className="my-4">Tailwind</p>
+          </div>
+          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+            <img className="w-20 mx-auto" src={JavaScript} alt="HTML icon" />
+            <p className="my-4">JAVASCRIPT</p>
+          </div>
+          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+            <img className="w-20 mx-auto" src={ReactImg} alt="HTML icon" />
+            <p className="my-4">REACT</p>
+          </div>
+          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+            <img className="w-20 mx-auto" src={GitHub} alt="HTML icon" />
+            <p className="my-4">GITHUB API</p>
+          </div>
+
+          <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+            <img className="w-20 mx-auto" src={FireBase} alt="HTML icon" />
+            <p className="my-4">Firebase</p>
+          </div>
+        </div>
       </div>
-      <div className="container flex justify-center items-center gap-6 p-14 mt-0">
-      
+      <div className="container flex justify-center items-center gap-6 p-14 mt-0 flex-wrap">
         <ProfileCard profile={alastair} />
         <ProfileCard profile={thomas} />
-        
       </div>
     </div>
   );

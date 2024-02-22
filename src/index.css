@@ -1,7 +1,8 @@
-#root, html,body {
+#root,
+html,
+body {
   padding: 0;
   margin: 0;
   height: 100vh;
   width: 100vw;
 }
-
