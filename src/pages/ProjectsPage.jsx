@@ -66,13 +66,13 @@ function ProjectsPage() {
   };
 
   return (
-    <div className=" flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
       <FilterSection
         changeSearchState={changeSearchState}
         changeCheckedState={changeCheckedState}
       />
-      <div className="container mx-auto">
-        <div className="flex flex-wrap justify-center gap-8">
+      
+        <div className="w-[100%] columns-1 md:columns-2 lg:columns-4">
           {projects?.map((obj) => {
             return (
               <Card
@@ -85,7 +85,7 @@ function ProjectsPage() {
           })}
         </div>
       </div>
-    </div>
+    
   );
 }
 
