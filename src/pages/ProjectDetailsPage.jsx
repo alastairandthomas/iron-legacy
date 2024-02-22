@@ -30,17 +30,17 @@ function ProjectDetailsPage(props) {
         .doc(id)
         .onSnapshot((project) => setProject(project.data()));
     }
-  }, [project]);
+  }, []);
 
-  const unFav = () => {
-    projectCall.update({
+  const unFav = async () => {
+    await projectCall.update({
       FavBy: firebase.firestore.FieldValue.arrayRemove(user?.uid),
     });
     console.log(project);
   };
 
-  const doFav = () => {
-    projectCall.update({
+  const doFav = async () => {
+    await projectCall.update({
       FavBy: firebase.firestore.FieldValue.arrayUnion(user?.uid),
     });
     console.log(project);
@@ -50,9 +50,15 @@ function ProjectDetailsPage(props) {
     project.FavBy.includes(user?.uid) ? unFav() : doFav();
   };
 
+
   return project ? (
+
+    
+    
     <div className="flex justify-evenly flex-wrap mt-[5%] lg:mt-[10%]">
-      <img src={project.image} className="w-5/6 lg:w-1/2 rounded-lg shadow-2xl" />
+      <img src={project.image} className={`w-5/6 lg:w-1/2 rounded-lg shadow-2xl`} />
+      
+     
 
       <div className="w-5/6 h-full lg:w-2/6 lg:h-4/5 flex flex-col justify-evenly mt-[10%] md:mt-[5%] lg:mt-0">
         <div className="flex justify-between">
