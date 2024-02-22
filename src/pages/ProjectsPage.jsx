@@ -67,7 +67,7 @@ function ProjectsPage() {
 
 
   return (
-    <div className="flex flex-col gap-6">
+    <div>
       <FilterSection
         changeSearchState={changeSearchState}
         changeCheckedState={changeCheckedState}
