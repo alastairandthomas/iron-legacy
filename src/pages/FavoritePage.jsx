@@ -1,12 +1,10 @@
 import { db } from '../firebase';
-import { useCollection } from 'react-firebase-hooks/firestore';
-import { auth, provider } from '../firebase';
+import { auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Card from '../components/Card';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { counter } from '@fortawesome/fontawesome-svg-core';
 
 function FavoritePage() {
   const [user, loading] = useAuthState(auth);
@@ -30,13 +28,25 @@ function FavoritePage() {
   }, [user]);
 
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-wrap justify-center gap-8">
+
+    <div className="flex flex-col gap-6">
+      
+    <div className="w-[100%] flex justify-center">
+      <div className="columns-1 md:columns-2 lg:columns-3 py-5">
         {projects?.map((obj) => {
-          return <Card obj={obj.data()} key={obj.id} id={obj.id} />;
+          return (
+            <Card
+              obj={obj.data()}
+              key={obj.id}
+              id={obj.id}
+              noFav="true"
+            />
+          );
         })}
       </div>
     </div>
+  </div>
+
   );
 }
 

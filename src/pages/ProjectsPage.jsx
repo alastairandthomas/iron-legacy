@@ -1,17 +1,17 @@
-import Card from '../components/Card';
-import { db } from '../firebase';
-import { useCollection } from 'react-firebase-hooks/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase';
-import FilterSection from '../components/FilterSection';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
+import Card from "../components/Card";
+import { db } from "../firebase";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
+import FilterSection from "../components/FilterSection";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { useState, useEffect } from "react";
 
 function ProjectsPage() {
   // const [projects, setProjects] = useState(null);
   // const [projects, loading, error] = useCollection(db.collection('projects'));
   const [user] = useAuthState(auth);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [isChecked, setIsChecked] = useState({});
   const [projects, setProjects] = useState(null);
 
@@ -25,8 +25,8 @@ function ProjectsPage() {
       }
     }
     return isCLicked
-      ? query(collection(db, 'projects'), where('module', 'in', conditionalArr))
-      : query(collection(db, 'projects'));
+      ? query(collection(db, "projects"), where("module", "in", conditionalArr))
+      : query(collection(db, "projects"));
   };
 
   const fetchProjects = async (input) => {
@@ -65,14 +65,15 @@ function ProjectsPage() {
     setIsChecked((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };
 
+
   return (
     <div className="flex flex-col gap-6">
       <FilterSection
         changeSearchState={changeSearchState}
         changeCheckedState={changeCheckedState}
       />
-      
-        <div className="w-[100%] columns-1 md:columns-2 lg:columns-4">
+      <div className="w-[100%] flex justify-center">
+        <div className="columns-1 md:columns-2 lg:columns-3 py-5">
           {projects?.map((obj) => {
             return (
               <Card
@@ -85,7 +86,7 @@ function ProjectsPage() {
           })}
         </div>
       </div>
-    
+    </div>
   );
 }
 
