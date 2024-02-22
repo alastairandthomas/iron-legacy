@@ -12,14 +12,15 @@ import Tailwind from '../assets/tailwind.png';
 const alastair = {
   name: 'Alastair Longmuir',
   img: 'https://firebasestorage.googleapis.com/v0/b/ironhack-projects-f2422.appspot.com/o/images%2Fpassbild.png?alt=media&token=31d6163a-20c8-43a4-a23e-e880d1a5a42d',
-  git: 'https://github.com/alaslong',
+  git: 'https://github.com/alaslong/',
   linkedin: 'https://www.linkedin.com/in/alastairlongmuir/',
+  website: 'https://alaslong.dev/'
 };
 
 const thomas = {
   name: 'Thomas Deblay',
   img: 'https://lh3.googleusercontent.com/a/ACg8ocI6BtPyAQdDuUYo80CdhruxxohG3kcoZrJtv5wM_oSVpg=s576-c-no',
-  git: 'https://github.com/Thomas-Deblay',
+  git: 'https://github.com/Thomas-Deblay/',
   linkedin: 'https://www.linkedin.com/in/thomas-deblay/',
 };
 
