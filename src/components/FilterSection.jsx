@@ -11,7 +11,7 @@ function FilterSection({ changeSearchState, changeCheckedState }) {
   };
 
   return (
-    <div className="mx-auto w-full">
+    <div className="mx-auto w-full mb-3">
       <h1 className="text-3xl font-bold tracking-tight text-gray-900 ml-6 md:ml-[26%] mb-3">
         Filter
       </h1>
