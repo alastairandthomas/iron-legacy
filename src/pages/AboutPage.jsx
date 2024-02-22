@@ -14,7 +14,7 @@ const alastair = {
   img: 'https://firebasestorage.googleapis.com/v0/b/ironhack-projects-f2422.appspot.com/o/images%2Fpassbild.png?alt=media&token=31d6163a-20c8-43a4-a23e-e880d1a5a42d',
   git: 'https://github.com/alaslong/',
   linkedin: 'https://www.linkedin.com/in/alastairlongmuir/',
-  website: 'https://alaslong.dev/'
+  website: 'https://alaslong.dev/',
 };
 
 const thomas = {
@@ -22,6 +22,7 @@ const thomas = {
   img: 'https://lh3.googleusercontent.com/a/ACg8ocI6BtPyAQdDuUYo80CdhruxxohG3kcoZrJtv5wM_oSVpg=s576-c-no',
   git: 'https://github.com/Thomas-Deblay/',
   linkedin: 'https://www.linkedin.com/in/thomas-deblay/',
+  website: 'https://thomasdeblay.com',
 };
 
 function AboutPage() {
@@ -49,15 +50,19 @@ function AboutPage() {
           </div>
           <div className=" hover:scale-110 duration-500">
             <img className="w-20 mx-auto" src={JavaScript} alt="HTML icon" />
-            <p className="my-4">JAVASCRIPT</p>
+            <p className="my-4">Javascript</p>
           </div>
           <div className=" hover:scale-110 duration-500">
             <img className="w-20 mx-auto" src={ReactImg} alt="HTML icon" />
-            <p className="my-4">REACT</p>
+            <p className="my-4">React</p>
           </div>
           <div className=" hover:scale-110 duration-500">
-            <img className="w-20 mx-auto" src={GitHub} alt="HTML icon" />
-            <p className="my-4">GITHUB API</p>
+            <img
+              className="w-20 mx-auto bg-black rounded-2xl p-2"
+              src={GitHub}
+              alt="HTML icon"
+            />
+            <p className="my-4">Github API</p>
           </div>
 
           <div className=" hover:scale-110 duration-500">

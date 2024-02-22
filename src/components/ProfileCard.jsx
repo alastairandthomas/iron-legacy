@@ -9,7 +9,10 @@ import {
 
 function ProfileCard({ profile }) {
   return (
-    <Card className="card w-96 h-104 bg-base-100 shadow-xl grid-cols-1 p-8">
+    <Card
+      className="   w-96 h-104 bg-base-100 shadow-xl grid-cols-1 p-8"
+      color="none"
+    >
       <CardHeader floated={false} className="h-80">
         <img src={profile.img} alt="profile-picture" />
       </CardHeader>
@@ -46,18 +49,20 @@ function ProfileCard({ profile }) {
             <i className="fab fa-linkedin" />
           </Typography>
         </Tooltip>
-        {profile.website && <Tooltip content="Website">
-          <Typography
-            as="a"
-            href={profile.website}
-            target="_blank"
-            variant="lead"
-            color="light-blue"
-            textGradient
-          >
-            <i className="fas fa-link" />
-          </Typography>
-        </Tooltip>}
+        {profile.website && (
+          <Tooltip content="Website">
+            <Typography
+              as="a"
+              href={profile.website}
+              target="_blank"
+              variant="lead"
+              color="light-blue"
+              textGradient
+            >
+              <i className="fas fa-link" />
+            </Typography>
+          </Tooltip>
+        )}
       </CardFooter>
     </Card>
   );

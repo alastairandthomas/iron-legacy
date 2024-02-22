@@ -12,7 +12,7 @@ function FilterSection({ changeSearchState, changeCheckedState }) {
 
   return (
     <div className="mx-auto flex flex-wrap justify-evenly w-full mb-3 bg-gray-200 py-6">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900 basis-[90%] md:basis-[30%] w-max m-0">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900 basis-[90%] md:basis-[30%] w-max">
         Filter
       </h1>
 
