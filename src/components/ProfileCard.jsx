@@ -22,7 +22,7 @@ function ProfileCard({ profile }) {
         </Typography> */}
       </CardBody>
       <CardFooter className="flex justify-center gap-7 pt-2">
-        <Tooltip content="Like">
+        <Tooltip content="GitHub">
           <Typography
             as="a"
             href={profile.git}
@@ -34,7 +34,7 @@ function ProfileCard({ profile }) {
             <i className="fab fa-github" />
           </Typography>
         </Tooltip>
-        <Tooltip content="Follow">
+        <Tooltip content="LinkedIn">
           <Typography
             as="a"
             href={profile.linkedin}
@@ -46,6 +46,18 @@ function ProfileCard({ profile }) {
             <i className="fab fa-linkedin" />
           </Typography>
         </Tooltip>
+        {profile.website && <Tooltip content="Website">
+          <Typography
+            as="a"
+            href={profile.website}
+            target="_blank"
+            variant="lead"
+            color="light-blue"
+            textGradient
+          >
+            <i className="fas fa-link" />
+          </Typography>
+        </Tooltip>}
       </CardFooter>
     </Card>
   );
