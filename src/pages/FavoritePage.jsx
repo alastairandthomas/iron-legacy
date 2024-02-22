@@ -28,25 +28,17 @@ function FavoritePage() {
   }, [user]);
 
   return (
-
-    <div className="flex flex-col gap-6">
-      
-    <div className="w-[100%] flex justify-center">
-      <div className="columns-1 md:columns-2 lg:columns-3 py-5">
-        {projects?.map((obj) => {
-          return (
-            <Card
-              obj={obj.data()}
-              key={obj.id}
-              id={obj.id}
-              noFav="true"
-            />
-          );
-        })}
+    <div className="flex flex-col gap-6 bg-gray-100">
+      <div className="w-[100%] flex justify-center">
+        <div className="columns-1 md:columns-2 lg:columns-3 py-5">
+          {projects?.map((obj) => {
+            return (
+              <Card obj={obj.data()} key={obj.id} id={obj.id} noFav="true" />
+            );
+          })}
+        </div>
       </div>
     </div>
-  </div>
-
   );
 }
 

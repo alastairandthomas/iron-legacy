@@ -1,5 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { useState, useEffect } from 'react';
 
 function FilterSection({ changeSearchState, changeCheckedState }) {
   const handleSearchChange = (e) => {
@@ -11,67 +11,70 @@ function FilterSection({ changeSearchState, changeCheckedState }) {
   };
 
   return (
-    <div className="mx-auto w-full mb-3">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900 ml-6 md:ml-[26%] mb-3">
+    <div className="mx-auto flex flex-wrap justify-evenly w-full mb-3 bg-gray-200 py-6">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900 basis-[90%] md:basis-[30%] w-max m-0">
         Filter
       </h1>
-      <div className="flex justify-center md:justify-center flex-wrap gap-5 md:gap-8">
-        <div class="basis-[90%] md:basis-[23.5%]">
-          <input
-            class="placeholder:text-slate-400 w-full border-slate-200 rounded-xl shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 font-sans text-base antialiased font-sm md:font-md leading-relaxed text-blue-gray-900"
-            placeholder="Search"
-            type="text"
-            name="search"
-            onChange={handleSearchChange}
-          />
-        </div>
 
-        <div className="basis-[90%] md:basis-[23.5%]">
-          <div class="flex rounded-xl shadow-md border border-slate-200 justify-around items-center">
+      <div class="mt-5 md:mt-0 basis-[90%] md:basis-[30%]">
+        <input
+          class="placeholder:text-slate-400 w-full border-slate-200 rounded-xl shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 font-sans text-base antialiased font-sm md:font-md leading-relaxed text-blue-gray-900"
+          placeholder="Search"
+          type="text"
+          name="search"
+          onChange={handleSearchChange}
+        />
+      </div>
 
-            <span className="font-sans text-base antialiased font-sm md:font-md leading-relaxed text-blue-gray-900 m-2">Module:</span>
-
-            <div className="flex items-center m-2">
+      <div className="mt-5 md:mt-0 basis-[90%] md:basis-[30%]">
+        <div class="flex rounded-xl  justify-center items-center m-0">
+          <div className="flex items-center m-0">
+            <label>
               <input
-                id="horizontal-list-react"
                 name="1"
                 type="checkbox"
                 onChange={handleCheckedChange}
-                class="h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-0"
+                aria-label="module 1"
+                className="hidden peer"
               />
+              <div className="bg-white peer-checked:bg-red-400 px-4 py-2 shadow-md border border-slate-200 rounded-s-xl">
+                {' '}
+                module 1
+              </div>
+            </label>
+          </div>
 
-              <span class="font-sans text-base antialiased font-sm md:font-md leading-relaxed text-blue-gray-900 mx-3">
-                1
-              </span>
-            </div>
-
-            <div className="flex items-center m-2">
+          <div className="flex items-center m-0">
+            <label>
               <input
                 id="horizontal-list-react"
                 name="2"
                 type="checkbox"
                 onChange={handleCheckedChange}
-                class="h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-0"
+                aria-label="module 2"
+                className="hidden peer"
               />
+              <div className="bg-white peer-checked:bg-yellow-400 py-2 px-4 shadow-md border border-slate-200 ">
+                {' '}
+                module 2
+              </div>
+            </label>
+          </div>
 
-              <span class="font-sans text-base antialiased font-sm md:font-md leading-relaxed text-blue-gray-900 mx-3">
-                2
-              </span>
-            </div>
-
-            <div className="flex items-center m-2">
+          <div className="flex items-center m-0">
+            <label>
               <input
-                id="horizontal-list-react"
                 name="3"
                 type="checkbox"
                 onChange={handleCheckedChange}
-                class="h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-0"
+                aria-label="module 3"
+                className="hidden peer"
               />
-
-              <span class="font-sans text-base antialiased font-sm md:font-md leading-relaxed text-blue-gray-900 mx-3">
-                3
-              </span>
-            </div>
+              <div className="bg-white peer-checked:bg-blue-400 px-4 py-2 rounded-e-xl shadow-md border border-slate-200">
+                {' '}
+                module 3
+              </div>
+            </label>
           </div>
         </div>
       </div>

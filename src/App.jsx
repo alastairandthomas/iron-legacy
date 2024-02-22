@@ -20,10 +20,8 @@ import MyProjects from './pages/MyProjects';
 function App() {
   const [user, loading] = useAuthState(auth);
 
-  
-
   return (
-    <>
+    <div className="bg-gray-100">
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -36,7 +34,7 @@ function App() {
         <Route path="/MyProjects" element={<MyProjects />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

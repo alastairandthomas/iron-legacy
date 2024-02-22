@@ -117,11 +117,15 @@ function ProjectDetailsPage(props) {
           })}
         </div> */}
 
-        <div className="flex justify-between flex-wrap-reverse mx-2">
+        <div className="flex justify-between flex-wrap-reverse mx-2 bg-gray-100">
           <button className="btn" onClick={() => navigate(-1)}>
             Back
           </button>
-          <a className="btn btn-primary" href={project.projectLink}>
+          <a
+            className="btn btn-primary"
+            href={project.projectLink}
+            target="_blank"
+          >
             View Project
           </a>
         </div>

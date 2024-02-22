@@ -11,9 +11,7 @@ function HomePage() {
           className="absolute inset-x-0 inset-y-[10%] -z-10 transform-gpu overflow-hidden blur-3xl"
           aria-hidden="true"
         >
-          <div
-            className="relative left-[50%] aspect-[2/1] w-[100%] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-          />
+          <div className="relative left-[50%] aspect-[2/1] w-[100%] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" />
         </div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
