@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import * as colors from "../assets/languageColors.json";
 
 function LanguagesBar({ languages }) {
-  delete languages.key;
+  delete languages?.key;
 
   const [languagePercentages, setLanguagePercentages] = useState(null);
   console.log(colors);
@@ -62,7 +62,7 @@ function LanguagesBar({ languages }) {
               );
             })}
           </div>
-          <ul className="flex flex-col md:flex-row md:items-center gap-6">
+          <ul className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
           {Object.keys(languagePercentages).map((keyName) => {
               return (
                 <div className="">
