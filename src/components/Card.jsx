@@ -89,7 +89,7 @@ function Card({ obj, id, isFav, noFav }) {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{obj.title}</h2>
-          <p>{obj.description}</p>
+          <p>{obj.headline}</p>
         </div>
 
         {/* INFORMATION ABOUT THE AUTHOR OF THE PROJECT THAT WE'LL GET FROM USER AUTH WITH FIREBASE ========= */}
