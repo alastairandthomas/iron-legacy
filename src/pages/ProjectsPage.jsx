@@ -80,6 +80,8 @@ function ProjectsPage() {
                 key={obj.id}
                 id={obj.id}
                 isFav={obj.data().FavBy.includes(user?.uid)}
+                noFav={!user}
+
               />
             );
           })}

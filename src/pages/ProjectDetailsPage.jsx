@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import LanguagesBar from '../components/LanguagesBar'
 
 function ProjectDetailsPage(props) {
   const { id } = useParams();
@@ -81,7 +82,7 @@ function ProjectDetailsPage(props) {
 
         <p className="m-2 mt-6">{project.headline}</p>
         <p className="m-2">{project.description}</p>
-        <progress class="progress w-56" value="10" max="100"></progress>
+        <LanguagesBar languages={project.languages}/>
         <div className="flex justify-between items-center mx-2 mt-6">
           <div className="flex items-center">
             <img

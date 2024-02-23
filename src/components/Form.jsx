@@ -81,7 +81,7 @@ function Form({
       })
         .then((response) => response.json())
         .then((result) => {
-          setInputs((prev) => ({ ...prev, tags: Object.keys(result) }));
+          setInputs((prev) => ({ ...prev, languages: result }));
         })
         .catch((err) => console.log(err));
     }
